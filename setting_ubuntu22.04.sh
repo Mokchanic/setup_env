@@ -5,5 +5,5 @@
 
 # Setup vscode
 echo "Setup_VSCode..."
-cd setup_vscode
+cd ubuntu22.04/setup_vscode
 ./total_vscode_install.sh
