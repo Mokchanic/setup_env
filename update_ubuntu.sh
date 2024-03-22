@@ -2,5 +2,5 @@
 
 # Update & Upgrade
 echo "Start Update & Upgrade ..."
-sudo apt update -y && sudo apt upgrade -y
-sudo apt autoremove -y
+sudo apt-get update && sudo apt-get -y upgrade && sudo apt -y autoremove
+

@@ -5,7 +5,8 @@
 
 # Install Git
 echo "Install Git"
-sudo apt install -y git
+sudo apt-get install -y git
 
 # Verify installed versions
 git --version
+

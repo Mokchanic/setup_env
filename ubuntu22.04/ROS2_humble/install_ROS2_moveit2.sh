@@ -1,0 +1,28 @@
+#!/bin/bash
+
+echo "Installing moveit2 ..."
+
+sudo rosdep init
+rosdep update
+sudo apt update
+sudo apt dist-upgrade
+
+## Install Colcon the ROS 2 build system with mixin
+sudo apt install python3-colcon-common-extensions
+sudo apt install python3-colcon-mixin
+colcon mixin add default https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
+colcon mixin update default
+
+## Make moveit2_ws
+mkdir -p ~/moveit2_ws/src
+cd ~/moveit2_ws/src
+git clone --branch humble https://github.com/ros-planning/moveit2_tutorials
+vcs import < moveit2_tutorials/moveit2_tutorials.repos
+
+sudo apt update && rosdep install -r --from-paths . --ignore-src --rosdistro $ROS_DISTRO -y
+cd ~/moveit2_ws
+colcon build --mixin release
+
+## Setup moveit2_ws
+source ~/moveit2_ws/install/setup.bash
+echo 'source ~/moveit2_ws/install/setup.bash' >> ~/.bashrc

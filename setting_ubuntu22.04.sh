@@ -3,7 +3,10 @@
 # Update & Upgrade
 ./update_ubuntu.sh
 
-# Setup vscode
-echo "Setup_VSCode..."
-cd ubuntu22.04/setup_vscode
-./total_vscode_install.sh
+# Setup ubuntu
+echo "Setup Ubuntu ..."
+cd ubuntu22.04/setup_programs
+./total_install_programs.sh
+
+echo "Now reboot system to apply changes"
+
