@@ -7,7 +7,7 @@ sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Enable Ubuntu Universe repository
-sudo apt install -y software-properties-common
+sudo apt -y install  software-properties-common
 sudo add-apt-repository universe
 
 # add GPG key
@@ -18,7 +18,7 @@ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
 # Update & Upgrade
-sudo apt update && sudo -y apt upgrade
+sudo apt update && sudo apt upgrade
 
 # Install ROS2-humble
 echo "Install ROS2-humble-desktop!"
@@ -67,18 +67,18 @@ sudo rosdep init
 rosdep update
 
 # Cyclone DDS
-sudo -y apt install ros-humble-rmw-cyclonedds-cpp
+sudo apt -y install ros-humble-rmw-cyclonedds-cpp
 
 ## Setup Cyclone DDS
-cd ~/robot_ws/src
-git clone https://github.com/ros2/rmw_cyclonedds ros2/rmw_cyclonedds -b humble
-git clone https://github.com/eclipse-cyclonedds/cyclonedds eclipse-cyclonedds/cyclonedds
-cd ..
-rosdep -y install --from src -i
-colcon build --symlink-install
-export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+# cd ~/robot_ws/src
+# git clone https://github.com/ros2/rmw_cyclonedds ros2/rmw_cyclonedds -b humble
+# git clone https://github.com/eclipse-cyclonedds/cyclonedds eclipse-cyclonedds/cyclonedds
+# cd ..
+# rosdep -y install --from src -i
+# colcon build --symlink-install
+# export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
-## Setup ROS2
+# ## Setup ROS2
 echo "## Setup ROS2" >> ~/.bashrc
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 echo "source ~/robot_ws/install/local_setup.bash" >> ~/.bashrc

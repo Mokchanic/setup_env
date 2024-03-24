@@ -40,3 +40,6 @@ sudo apt-get -y install kolourpaint # kolourpaint
 echo "Installing peek ..."
 sudo apt-get -y install peek # peek
 
+# VLC Media
+sudo snap install vlc
+
