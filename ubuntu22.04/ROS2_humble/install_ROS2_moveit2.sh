@@ -9,7 +9,7 @@ sudo apt install python3-rosdep
 sudo rosdep init
 rosdep update
 sudo apt update
-sudo apt dist-upgrade
+sudo apt -y dist-upgrade
 
 ## Install Colcon the ROS 2 build system with mixin
 sudo apt -y install python3-colcon-common-extensions

@@ -31,7 +31,7 @@ source /opt/ros/humble/setup.bash
 sudo apt -y install python3-colcon-common-extensions
 
 # Install ros-tools
-sudo apt update && sudo apt install -y \
+sudo apt update && sudo apt -y install \
   ros-dev-tools\
   libbullet-dev \
   python3-flake8 \
