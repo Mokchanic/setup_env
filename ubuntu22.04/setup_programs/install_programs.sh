@@ -43,3 +43,5 @@ sudo apt-get -y install peek # peek
 # VLC Media
 sudo snap install vlc
 
+# Plotjuggler
+sudo snap install plotjuggler

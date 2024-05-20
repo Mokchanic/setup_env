@@ -31,4 +31,4 @@ colcon build --mixin release --parallel-workers 1
 
 ## Setup moveit2_ws
 source ~/moveit2_ws/install/setup.bash
-echo 'source ~/moveit2_ws/install/setup.bash' >> ~/.bashrc
+echo 'source ~/moveit2_ws/install/local_setup.bash' >> ~/.bashrc
