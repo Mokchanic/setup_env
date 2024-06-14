@@ -110,8 +110,8 @@ echo "" >> ~/.bashrc
 echo "alias rsl='source $HOME/robot_ws/install/local_setup.bash'" >> ~/.bashrc
 echo "" >> ~/.bashrc
 echo "alias rt='ros2 topic list'" >> ~/.bashrc
-echo "alias rt='ros2 topic echo'" >> ~/.bashrc
-echo "alias rt='ros2 topic node list'" >> ~/.bashrc
+echo "alias re='ros2 topic echo'" >> ~/.bashrc
+echo "alias rn='ros2 topic node list'" >> ~/.bashrc
 echo "" >> ~/.bashrc
 echo "alias killgazebo='killall -9 gazebo & killall -9 gzserver  & killall -9 gzclient'" >> ~/.bashrc
 echo "" >> ~/.bashrc
