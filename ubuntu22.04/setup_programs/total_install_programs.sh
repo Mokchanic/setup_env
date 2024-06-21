@@ -6,7 +6,7 @@
 ./install_gcc.sh
 ./install_python.sh
 ./install_git.sh
-./install_programs.sh
 ./install_terminal.sh
 ./install_IDE.sh
 ./install_github_cli.sh
+./install_programs.sh

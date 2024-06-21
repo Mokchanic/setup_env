@@ -41,10 +41,20 @@ echo "Installing peek ..."
 sudo apt-get -y install peek # peek
 
 # VLC Media
+echo "Installing vlc ..."
 sudo snap install vlc
 
 # Plotjuggler
+echo "Installing plotjuggler ..."
 sudo snap install plotjuggler
+
+# Blender
+echo "Installing blender ..." 
+sudo snap install blender
+
+# FreeCad
+echo "Installing plotjuggler ..."
+sudo snap install freecad
 
 # Docker
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
