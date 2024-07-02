@@ -5,7 +5,7 @@
 
 # Setup ubuntu
 echo "Setup Ubuntu ..."
-cd ubuntu22.04/setup_programs
+cd ubuntu24.04/setup_programs
 ./total_install_programs.sh
 
 echo "Now reboot system to apply changes"
