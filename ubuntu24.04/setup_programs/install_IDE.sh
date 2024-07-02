@@ -1,4 +1,4 @@
-s#!/bin/bash
+#!/bin/bash
 
 echo "Install IDE"
 sudo snap install pycharm-community --classic # Pycharm Community IDE
