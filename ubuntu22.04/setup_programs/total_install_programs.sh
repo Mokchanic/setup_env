@@ -10,3 +10,4 @@
 ./install_IDE.sh
 ./install_github_cli.sh
 ./install_programs.sh
+./install_docker.sh

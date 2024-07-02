@@ -58,8 +58,9 @@ python3 -m pip install -U \
 
 ## Make base ROS2_ws
 source /opt/ros/humble/setup.bash
-mkdir -p ~/robot_ws/src
-cd ~/robot_ws/
+export ROBOT_WS=~/workspace/robot_ws
+mkdir -p $ROBOT_WS/src
+cd ~/workspace/robot_ws/
 colcon build --symlink-install
 
 ## rosdep init
