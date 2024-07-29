@@ -16,12 +16,15 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 
- sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 
 docker --version
 
+sudo groupadd docker
 sudo usermod -aG docker ${USER}
+sudo service docker restart
+newgrp docker
 
 # Nvidia-docker
 sudo systemctl --now enable docker
@@ -38,4 +41,3 @@ sudo apt-get update
 sudo apt-get install -y nvidia-container-toolkit
 sudo nvidia-ctk runtime configure --runtime=docker
 sudo systemctl restart docker
-
