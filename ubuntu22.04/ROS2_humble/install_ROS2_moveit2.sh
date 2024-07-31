@@ -4,7 +4,7 @@ echo "Installing moveit2 ..."
 
 source /opt/ros/humble/setup.bash
 
-sudo apt-get install python3-rosdep
+sudo apt-get -y install python3-rosdep
 
 sudo rosdep init
 rosdep update

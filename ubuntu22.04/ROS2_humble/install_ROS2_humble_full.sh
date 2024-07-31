@@ -1,37 +1,13 @@
 #!/bin/bash
 
-# Set locale
-sudo apt update && sudo apt install locales
-sudo locale-gen en_US en_US.UTF-8
-sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-export LANG=en_US.UTF-8
-
-# Enable Ubuntu Universe repository
-sudo apt -y install  software-properties-common
-sudo add-apt-repository universe
-
-# add GPG key
-sudo apt update && sudo apt -y install curl
-sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-
-# add repository
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
-
 # Update & Upgrade
-sudo apt update && sudo apt upgrade
-
-# Install ROS2-humble
-echo "Install ROS2-humble-desktop!"
-sudo apt -y install ros-humble-desktop-full
-
-# Set_env
-source /opt/ros/humble/setup.bash
+sudo apt-get update && sudo apt-get upgrade -y
 
 # Install colcon
-sudo apt -y install python3-colcon-common-extensions
+sudo apt-get -y install python3-colcon-common-extensions
 
 # Install ros-tools
-sudo apt update && sudo apt -y install \
+sudo apt-get update && sudo apt -y install \
   ros-dev-tools\
   libbullet-dev \
   python3-flake8 \

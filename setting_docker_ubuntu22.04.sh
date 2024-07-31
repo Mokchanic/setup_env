@@ -6,7 +6,10 @@
 # Setup ubuntu
 echo "Setup Ubuntu 22.04 ..."
 cd ubuntu22.04/setup_programs
-./total_install_programs.sh
+./setup_bashrc.sh
+./install_ROS2_humble_full.sh
+./install_ROS2_moveit2.sh
+./install_ROS2_ur_gazebo.sh
+./install_ROS2_ur_manipulator.sh
 
 echo "Now reboot system to apply changes"
-
