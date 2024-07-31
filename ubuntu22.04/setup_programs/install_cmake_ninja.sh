@@ -13,4 +13,3 @@ sudo apt-get install -y ninja-build
 
 # Verify installed versions
 ninja --version
-

@@ -1,22 +1,22 @@
 #!/bin/bash
 
 echo "Start Install programs!"
+sudo apt-get update
 
 # Google Chrome
 echo "Installing Chrome ..."
 wget -nc https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt -y install ./google-chrome-stable_current_amd64.deb
+sudo apt-get -y install ./google-chrome-stable_current_amd64.deb
 sudo rm -rf ./google-chrome-stable_current_amd64.deb
 
 # Naver Whale
 echo "Installing Whale ..."
 sudo sh -c 'echo "deb [arch=amd64] http://repo.whale.naver.com/stable/deb stable main" >> /etc/apt/sources.list.d/naver-whale.list'
 wget -q -O - http://repo.whale.naver.com/stable/deb/public.gpg | sudo apt-key add -
-sudo apt update
-sudo apt -y install naver-whale-stable
+sudo apt-get -y install naver-whale-stable
 
 sudo cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
-sudo apt update
+sudo apt-get update
 
 # Notion
 echo "Installing Notion ..."
@@ -29,7 +29,7 @@ sudo snap install slack --classic
 # Teamviewer
 echo "Installing Teamviewer ..."
 wget -nc https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
-sudo apt -y install ./teamviewer_amd64.deb
+sudo apt-get -y install ./teamviewer_amd64.deb
 sudo rm -rf ./teamviewer_amd64.deb
 
 # kolourpaint
@@ -49,9 +49,13 @@ echo "Installing plotjuggler ..."
 sudo snap install plotjuggler
 
 # Blender
-echo "Installing blender ..." 
-sudo snap install blender
+echo "Installing blender ..."
+sudo snap install blender --classic
 
 # FreeCad
 echo "Installing plotjuggler ..."
 sudo snap install freecad
+
+# Monitoring
+sudo apt-get update
+sudo apt-get install -y net-tools htop nvitop
