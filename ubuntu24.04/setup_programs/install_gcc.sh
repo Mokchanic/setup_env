@@ -9,4 +9,3 @@ sudo apt-get install -y gcc
 
 # Verify installed versions
 gcc --version
-

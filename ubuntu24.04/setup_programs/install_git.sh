@@ -9,4 +9,3 @@ sudo apt-get install -y git
 
 # Verify installed versions
 git --version
-

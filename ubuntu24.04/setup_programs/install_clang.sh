@@ -7,4 +7,3 @@ sudo apt-get install -y clang
 
 # Verify installed versions
 clang --version
-
