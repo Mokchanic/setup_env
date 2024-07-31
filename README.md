@@ -10,6 +10,6 @@ A shell script for setting up Ubuntu 22.04 environment.
     cd /setup_ubuntu/ubuntu22.04/ROS2_humble
     ./install_ROS2_humble_full.sh
 
-### 2. Setup ROS2-humble moveit2
+### 3. Setup ROS2-humble moveit2
     cd /setup_ubuntu/ubuntu22.04/ROS2_humble
     ./install_ROS2_moveit2.sh
