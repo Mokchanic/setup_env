@@ -4,7 +4,7 @@ echo "Installing Intel Realsense ..."
 
 # Install SDK
 sudo apt-get update
-sudo apt-get install ros-<ROS_DISTRO>-librealsense2*
+sudo apt-get -y install ros-${ROS_DISTRO}-librealsense2*
 
 # Install Wrapper
 export CAMERA_WS=~/ros_workspace/camera_ws
