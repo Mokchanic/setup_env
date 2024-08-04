@@ -34,7 +34,7 @@ python3 -m pip install -U \
 
 ## Make base ROS2_ws
 source /opt/ros/humble/setup.bash
-export ROBOT_WS=~/ros_workspace/robot_ws
+export ROBOT_WS=~/ros2_workspace/robot_ws
 mkdir -p $ROBOT_WS/src
 cd $ROBOT_WS
 colcon build --symlink-install
@@ -58,12 +58,12 @@ sudo apt -y install ros-${ROS_DISTRO}-rmw-cyclonedds-cpp
 # ## Setup ROS2
 echo "## Setup ROS2" >> ~/.bashrc
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
-echo "source ~/ros_workspace/robot_ws/install/local_setup.bash" >> ~/.bashrc
+echo "source ~/ros2_workspace/robot_ws/install/local_setup.bash" >> ~/.bashrc
 echo "" >> ~/.bashrc
 echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc
 echo "source /usr/share/vcstool-completion/vcs.bash" >> ~/.bashrc
 echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
-echo "export _colcon_cd_root=~/ros_workspace/robot_ws" >> ~/.bashrc
+echo "export _colcon_cd_root=~/ros2_workspace/robot_ws" >> ~/.bashrc
 echo "" >> ~/.bashrc
 echo "export ROS_DOMAIN_ID=17" >> ~/.bashrc
 echo "export ROS_NAMESPACE=robot1" >> ~/.bashrc
@@ -73,10 +73,10 @@ echo "# export RMW_IMPLEMENTATION=rmw_connext_cpp" >> ~/.bashrc
 echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ~/.bashrc
 echo "# export RMW_IMPLEMENTATION=rmw_gurumdds_cpp" >> ~/.bashrc
 echo "" >> ~/.bashrc
-echo "alias cw='cd ~/ros_workspace/robot_ws'" >> ~/.bashrc
-echo "alias cs='cd ~/ros_workspace/robot_ws'" >> ~/.bashrc
+echo "alias cw='cd ~/ros2_workspace/robot_ws'" >> ~/.bashrc
+echo "alias cs='cd ~/ros2_workspace/robot_ws'" >> ~/.bashrc
 echo "alias ccd='colcon_cd'" >> ~/.bashrc
-echo "alias cb='cd ~/ros_workspace/robot_ws && colcon build --symlink-install'" >> ~/.bashrc
+echo "alias cb='cd ~/ros2_workspace/robot_ws && colcon build --symlink-install'" >> ~/.bashrc
 echo "alias cbs='colcon build --symlink-install'" >> ~/.bashrc
 echo "alias cbp='colcon build --symlink-install --packages-select'" >> ~/.bashrc
 echo "alias cbu='colcon build --symlink-install --packages-up-to'" >> ~/.bashrc
@@ -84,7 +84,7 @@ echo "alias ct='colcon test'" >> ~/.bashrc
 echo "alias ctp='colcon test --packages-select'" >> ~/.bashrc
 echo "alias ctr='colcon test-result'" >> ~/.bashrc
 echo "" >> ~/.bashrc
-echo "alias rsl='source ~/ros_workspace/robot_ws/install/local_setup.bash'" >> ~/.bashrc
+echo "alias rsl='source ~/ros2_workspace/robot_ws/install/local_setup.bash'" >> ~/.bashrc
 echo "" >> ~/.bashrc
 echo "alias rt='ros2 topic list'" >> ~/.bashrc
 echo "alias re='ros2 topic echo'" >> ~/.bashrc

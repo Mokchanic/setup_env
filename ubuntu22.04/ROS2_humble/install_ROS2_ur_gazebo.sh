@@ -2,7 +2,7 @@
 
 echo "Installing UR Gazebo ..."
 
-export UR_GAZEBO_WS=~/ros_workspace/ur_gazebo_ws
+export UR_GAZEBO_WS=~/ros2_workspace/ur_gazebo_ws
 mkdir -p $UR_GAZEBO_WS/src
 cd $UR_GAZEBO_WS
 
@@ -15,4 +15,4 @@ rosdep update && rosdep install --ignore-src --from-paths src -y
 
 colcon build --symlink-install
 source install/setup.bash
-echo 'source ~/ros_workspace/ur_gazebo_ws/install/local_setup.bash' >> ~/.bashrc
+echo 'source ~/ros2_workspace/ur_gazebo_ws/install/local_setup.bash' >> ~/.bashrc

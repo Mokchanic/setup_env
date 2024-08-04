@@ -7,7 +7,7 @@ sudo apt-get update
 sudo apt-get -y install ros-${ROS_DISTRO}-librealsense2*
 
 # Install Wrapper
-export CAMERA_WS=~/ros_workspace/camera_ws
+export CAMERA_WS=~/ros2_workspace/camera_ws
 mkdir -p $CAMERA_WS/src
 cd $CAMERA_WS
 
@@ -21,4 +21,4 @@ colcon build
 source /opt/ros/${ROS_DISTRO}/setup.bash
 
 source install/setup.bash
-echo 'source ~/ros_workspace/camera_ws/install/local_setup.bash' >> ~/.bashrc
+echo 'source ~/ros2_workspace/camera_ws/install/local_setup.bash' >> ~/.bashrc
