@@ -7,7 +7,7 @@ sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Enable Ubuntu Universe repository
-sudo apt -y install  software-properties-common
+sudo apt -y install software-properties-common
 sudo add-apt-repository universe
 
 # add GPG key
@@ -16,16 +16,15 @@ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o
 
 # add repository
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+# Update
+sudo apt update
 
-# Update & Upgrade
-sudo apt update && sudo apt upgrade
-
-# Install ROS2-humble
-echo "Install ROS2-humble-desktop!"
-sudo apt -y install ros-humble-desktop-full
+# Install ROS2-jazzy
+echo "Install ROS2-${ROS_DISTRO}-desktop!"
+sudo apt -y install ros-${ROS_DISTRO}-desktop-full
 
 # Set_env
-source /opt/ros/humble/setup.bash
+source /opt/ros/${ROS_DISTRO}/setup.bash
 
 # Install colcon
 sudo apt -y install python3-colcon-common-extensions
@@ -58,8 +57,9 @@ python3 -m pip install -U \
 
 ## Make base ROS2_ws
 source /opt/ros/humble/setup.bash
-mkdir -p ~/robot_ws/src
-cd ~/robot_ws/
+export ROBOT_WS=~/ros2_workspace/robot_ws
+mkdir -p ${ROBOT_WS}/src
+cd ${ROBOT_WS}
 colcon build --symlink-install
 
 ## rosdep init
@@ -69,26 +69,17 @@ rosdep update
 # Cyclone DDS
 sudo apt -y install ros-humble-rmw-cyclonedds-cpp
 
-## Setup Cyclone DDS
-# cd ~/robot_ws/src
-# git clone https://github.com/ros2/rmw_cyclonedds ros2/rmw_cyclonedds -b humble
-# git clone https://github.com/eclipse-cyclonedds/cyclonedds eclipse-cyclonedds/cyclonedds
-# cd ..
-# rosdep -y install --from src -i
-# colcon build --symlink-install
-# export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-
 # ## Setup ROS2
 echo "## Setup ROS2" >> ~/.bashrc
-echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
-echo "source ~/robot_ws/install/local_setup.bash" >> ~/.bashrc
+echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
+echo "source ${ROBOT_WS}/install/local_setup.bash" >> ~/.bashrc
 echo "" >> ~/.bashrc
 echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc
 echo "source /usr/share/vcstool-completion/vcs.bash" >> ~/.bashrc
 echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
-echo "export _colcon_cd_root=~/robot_ws" >> ~/.bashrc
+echo "export _colcon_cd_root=${ROBOT_WS}" >> ~/.bashrc
 echo "" >> ~/.bashrc
-echo "export ROS_DOMAIN_ID=17" >> ~/.bashrc
+echo "export ROS_DOMAIN_ID=10" >> ~/.bashrc
 echo "export ROS_NAMESPACE=robot1" >> ~/.bashrc
 echo "" >> ~/.bashrc
 echo "# export RMW_IMPLEMENTATION=rmw_fastrtps_cpp" >> ~/.bashrc
@@ -96,10 +87,10 @@ echo "# export RMW_IMPLEMENTATION=rmw_connext_cpp" >> ~/.bashrc
 echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ~/.bashrc
 echo "# export RMW_IMPLEMENTATION=rmw_gurumdds_cpp" >> ~/.bashrc
 echo "" >> ~/.bashrc
-echo "alias cw='cd ~/robot_ws'" >> ~/.bashrc
-echo "alias cs='cd ~/robot_ws/src'" >> ~/.bashrc
+echo "alias cw='cd ${ROBOT_WS}'" >> ~/.bashrc
+echo "alias cs='cd ${ROBOT_WS}/src'" >> ~/.bashrc
 echo "alias ccd='colcon_cd'" >> ~/.bashrc
-echo "alias cb='cd ~/robot_ws && colcon build --symlink-install'" >> ~/.bashrc
+echo "alias cb='cd ${ROBOT_WS} && colcon build --symlink-install'" >> ~/.bashrc
 echo "alias cbs='colcon build --symlink-install'" >> ~/.bashrc
 echo "alias cbp='colcon build --symlink-install --packages-select'" >> ~/.bashrc
 echo "alias cbu='colcon build --symlink-install --packages-up-to'" >> ~/.bashrc
@@ -107,7 +98,7 @@ echo "alias ct='colcon test'" >> ~/.bashrc
 echo "alias ctp='colcon test --packages-select'" >> ~/.bashrc
 echo "alias ctr='colcon test-result'" >> ~/.bashrc
 echo "" >> ~/.bashrc
-echo "alias rsl='source $HOME/robot_ws/install/local_setup.bash'" >> ~/.bashrc
+echo "alias rsl='source ${ROBOT_WS}/install/local_setup.bash'" >> ~/.bashrc
 echo "" >> ~/.bashrc
 echo "alias rt='ros2 topic list'" >> ~/.bashrc
 echo "alias re='ros2 topic echo'" >> ~/.bashrc
