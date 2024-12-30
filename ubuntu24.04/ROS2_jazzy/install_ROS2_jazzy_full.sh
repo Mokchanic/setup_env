@@ -16,8 +16,12 @@ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o
 
 # add repository
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
-# Update
-sudo apt update
+
+# Install ros-dev-tools
+sudo apt update && sudo apt install ros-dev-tools
+
+# Update && Upgrade
+sudo apt update && sudo apt upgrade
 
 # Install ROS2-jazzy
 echo "Install ROS2-${ROS_DISTRO}-desktop!"
@@ -31,7 +35,6 @@ sudo apt -y install python3-colcon-common-extensions
 
 # Install ros-tools
 sudo apt update && sudo apt -y install \
-  ros-dev-tools\
   libbullet-dev \
   python3-flake8 \
   python3-pip \
@@ -56,8 +59,8 @@ python3 -m pip install -U \
   pytest
 
 ## Make base ROS2_ws
-source /opt/ros/humble/setup.bash
-export ROBOT_WS=~/ros2_workspace/robot_ws
+source /opt/ros/${ROS_DISTRO}/setup.bash
+export ROBOT_WS=~/local_workspace/robot_ws
 mkdir -p ${ROBOT_WS}/src
 cd ${ROBOT_WS}
 colcon build --symlink-install
@@ -67,7 +70,7 @@ sudo rosdep init
 rosdep update
 
 # Cyclone DDS
-sudo apt -y install ros-humble-rmw-cyclonedds-cpp
+sudo apt -y install ros-${ROS_DISTRO}-rmw-cyclonedds-cpp
 
 # ## Setup ROS2
 echo "## Setup ROS2" >> ~/.bashrc
@@ -82,9 +85,9 @@ echo "" >> ~/.bashrc
 echo "export ROS_DOMAIN_ID=10" >> ~/.bashrc
 echo "export ROS_NAMESPACE=robot1" >> ~/.bashrc
 echo "" >> ~/.bashrc
-echo "# export RMW_IMPLEMENTATION=rmw_fastrtps_cpp" >> ~/.bashrc
+echo "export RMW_IMPLEMENTATION=rmw_fastrtps_cpp" >> ~/.bashrc
 echo "# export RMW_IMPLEMENTATION=rmw_connext_cpp" >> ~/.bashrc
-echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ~/.bashrc
+echo "# export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ~/.bashrc
 echo "# export RMW_IMPLEMENTATION=rmw_gurumdds_cpp" >> ~/.bashrc
 echo "" >> ~/.bashrc
 echo "alias cw='cd ${ROBOT_WS}'" >> ~/.bashrc
