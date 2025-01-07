@@ -8,7 +8,7 @@ export LANG=en_US.UTF-8
 
 # Enable Ubuntu Universe repository
 sudo apt -y install software-properties-common
-sudo add-apt-repository universe
+sudo add-apt-repository -y universe
 
 # add GPG key
 sudo apt update && sudo apt -y install curl
@@ -18,17 +18,17 @@ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
 # Install ros-dev-tools
-sudo apt update && sudo apt install ros-dev-tools
+sudo apt update && sudo apt install -y ros-dev-tools
 
 # Update && Upgrade
 sudo apt update && sudo apt upgrade
 
 # Install ROS2-jazzy
-echo "Install ROS2-${ROS_DISTRO}-desktop!"
-sudo apt -y install ros-${ROS_DISTRO}-desktop-full
+echo "Install ROS2-jazzy-desktop!"
+sudo apt -y install ros-jazzy-desktop-full
 
 # Set_env
-source /opt/ros/${ROS_DISTRO}/setup.bash
+source /opt/ros/jazzy/setup.bash
 
 # Install colcon
 sudo apt -y install python3-colcon-common-extensions
@@ -59,7 +59,7 @@ python3 -m pip install -U \
   pytest
 
 ## Make base ROS2_ws
-source /opt/ros/${ROS_DISTRO}/setup.bash
+source /opt/ros/jazzy/setup.bash
 export ROBOT_WS=~/local_workspace/robot_ws
 mkdir -p ${ROBOT_WS}/src
 cd ${ROBOT_WS}
@@ -70,11 +70,11 @@ sudo rosdep init
 rosdep update
 
 # Cyclone DDS
-sudo apt -y install ros-${ROS_DISTRO}-rmw-cyclonedds-cpp
+sudo apt -y install ros-jazzy-rmw-cyclonedds-cpp
 
-# ## Setup ROS2
+## Setup ROS2
 echo "## Setup ROS2" >> ~/.bashrc
-echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
+echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
 echo "source ${ROBOT_WS}/install/local_setup.bash" >> ~/.bashrc
 echo "" >> ~/.bashrc
 echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc

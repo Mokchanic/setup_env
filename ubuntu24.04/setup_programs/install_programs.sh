@@ -12,12 +12,9 @@ sudo rm -rf ./google-chrome-stable_current_amd64.deb
 # Naver Whale
 #echo "Installing Whale ..."
 #sudo sh -c 'echo "deb [arch=amd64] http://repo.whale.naver.com/stable/deb stable main" >> /etc/apt/sources.list.d/naver-whale.list'
-#wget -q -O - http://repo.whale.naver.com/stable/deb/public.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/naver-whale.gpg
+#wget -qO - https://repo.whale.naver.com/stable/deb/public.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/naver-whale.gpg
 #sudo apt-get update
 #sudo apt-get -y install naver-whale-stable
-
-#sudo cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
-#sudo apt-get update
 
 # Notion
 echo "Installing Notion ..."
